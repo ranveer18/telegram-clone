@@ -24,28 +24,23 @@ Ensure you have the following installed on your local machine:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/telegram-messaging-app.git
-    cd telegram-messaging-app
+    git clone git@github.com:ranveer18/telegram-clone.git
+    cd telegram-clone
     ```
 
-2. **Install backend dependencies:**
+
+
+2. **Navigate to the telegram-clone directory and install frontend dependencies:**
 
     ```bash
     npm install
     ```
 
-3. **Navigate to the client directory and install frontend dependencies:**
-
-    ```bash
-    cd client
-    npm install
-    ```
-
-4. **Configure Environment Variables:**
+3. **Configure Environment Variables:**
 
     Rename the `.env.example` file to `.env` in the root directory and set up your environment variables.
 
-5. **Start the development server:**
+4. **Start the development server:**
 
     ```bash
     npm run dev
