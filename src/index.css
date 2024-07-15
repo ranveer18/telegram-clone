@@ -672,6 +672,13 @@ main {
   unicode-bidi: plaintext;
 }
 
+.line {
+  height: 0.1px;
+  width: 100%;
+  background-color: #70757973;
+  margin-top: 5px;
+}
+
 @media screen and (max-width: 768px) {
   .right-side {
     width: 100vw;

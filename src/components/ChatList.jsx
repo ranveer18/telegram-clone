@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const ChatList = ({ chats }) => {
   const navigate = useNavigate();
-
   const handleChatClick = (chatId) => {
     navigate(`/${chatId}`);
   };
@@ -38,6 +37,7 @@ const ChatList = ({ chats }) => {
                 </h3>
                 <span>{truncateMessage(chat.lastMessage)}</span>
               </div>
+              <div className="line"></div>
             </div>
           </div>
         ))}

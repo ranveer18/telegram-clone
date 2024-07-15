@@ -1,63 +1,114 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import "./Menu.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAddressBook,
+  faBars,
+  faBookmark,
+  faCircleQuestion,
+  faCircleUser,
+  faContactBook,
+  faGear,
+  faLocation,
+  faMoon,
+  faPeopleArrows,
+  faPhone,
+  faSun,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const navRef = useRef(null);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const toggleNav = () => {
+    setIsActive(!isActive);
+  };
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const handleBlur = () => {
+    setIsActive(false);
   };
 
   return (
-    <div className="Menu main-menu">
-      <div className="hamburger-icon" onClick={toggleMenu}>
-        <FontAwesomeIcon icon={faBars} className="hamburger-icon" />
-      </div>
-      {isOpen && <div className="backdrop" onClick={toggleMenu}></div>}
-      <div
-        role="presentation"
-        className={` bubble menu-container custom-scroll top left with-footer opacity-transition ${
-          isOpen ? "open" : "not-open"
-        }`}
-        style={{ transformOrigin: "left top" }}
-      >
-        <div role="menuitem" tabIndex="0" className="menuitem">
-          <i className="icon icon-saved-messages"></i>
-          <p>Saved Messages</p>
-        </div>
-        <div role="menuitem" tabIndex="0" className="menuitem">
-          <i className="icon icon-user"></i>Contacts
-        </div>
-        <div role="menuitem" tabIndex="0" className="menuitem">
-          <i className="icon icon-play-story"></i>My Stories
-        </div>
-        <div role="menuitem" tabIndex="0" className="menuitem">
-          <i className="icon icon-settings"></i>Settings
-        </div>
-        <div role="menuitem" tabIndex="0" className="menuitem">
-          <i className="icon icon-darkmode"></i>
-          <span className="menu-item-name">Night Mode</span>
-          <label className="Switcher no-animation" title="Disable night mode">
-            <input type="checkbox" id="darkmode" />
-            <span className="widget"></span>
-          </label>
-        </div>
-        <div role="menuitem" tabIndex="0" className="menuitem">
-          <i className="icon icon-animations"></i>
-          <span className="menu-item-name capitalize">animations</span>
-          <div className="eGD1rubd Toggle" aria-hidden="true">
-            <i className="kudEBJOk LdztzMx0"></i>
-            <i className="EXXsQxeq LdztzMx0"></i>
+    <div
+      className={`nav-container ${isActive ? "is-active" : ""}`}
+      tabIndex="0"
+      ref={navRef}
+      onBlur={handleBlur}
+    >
+      <FontAwesomeIcon
+        icon={faBars}
+        onClick={toggleNav}
+        className="hamburger-icon"
+      />
+      <nav className="nav-items">
+        <div className="profile">
+          <div className="dark-profile">
+            <span className="profile-img">R</span>
+            {isDarkMode ? (
+              <FontAwesomeIcon
+                icon={faSun}
+                onClick={toggleDarkMode}
+                className="moon"
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={faMoon}
+                onClick={toggleDarkMode}
+                className="moon"
+              />
+            )}
+          </div>
+          <div className="profile-details">
+            <h3>Ranveer Kumar</h3>
+            <p>+91 7564042812</p>
           </div>
         </div>
-        <div role="menuitem" tabIndex="0" className="menuitem">
-          <i className="icon icon-help"></i>Telegram Features
-        </div>
-        <div role="menuitem" tabIndex="0" className="menuitem">
-          <i className="icon icon-bug"></i>Report a Bug
-        </div>
-      </div>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faCircleUser} />
+          My Profile
+        </a>
+        <div className="line"></div>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faUser} />
+          New Group
+        </a>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faAddressBook} />
+          Contacts
+        </a>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faPhone} />
+          Calls
+        </a>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faLocation} />
+          People Nearby
+        </a>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faBookmark} />
+          Saved Messages
+        </a>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faGear} />
+          Settings
+        </a>
+        <div className="line"></div>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faPeopleArrows} />
+          Invite Friends
+        </a>
+        <a className="nav-item" href="#">
+          <FontAwesomeIcon icon={faCircleQuestion} />
+          Telegram Features
+        </a>
+      </nav>
     </div>
   );
 };

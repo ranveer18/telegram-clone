@@ -1,0 +1,136 @@
+:root {
+    /* --toggle-size: 40px; */
+    /* --toggle-margin: 10px; */
+    /* --toggle-line: 4px; */
+    /* --toggle-color: red; */
+}
+
+.nav-container {
+    /* position: relative; */
+    /* top: 0; */
+    display: inline-block;
+    max-width: calc(var(--toggle-size) + var(--toggle-margin));
+    max-height: calc(var(--toggle-size) + var(--toggle-margin));
+    overflow: visible;
+    outline: none;
+}
+
+.nav-container.is-active .nav-toggle:before,
+.nav-container.is-active .nav-toggle:after {
+    box-shadow: none;
+}
+
+.nav-container.is-active .nav-toggle:before {
+    transform: rotate(-45deg);
+}
+
+.nav-container.is-active .nav-toggle:after {
+    transform: rotate(45deg);
+}
+
+.nav-container.is-active .nav-items {
+    transform: translate(0, 0);
+}
+
+.nav-toggle {
+    position: relative;
+    width: var(--toggle-size);
+    height: var(--toggle-size);
+    margin: var(--toggle-margin);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.nav-toggle:before,
+.nav-toggle:after {
+    content: "";
+    position: absolute;
+    top: calc(var(--toggle-size) * 0.5 - var(--toggle-line) / 2);
+    left: 0;
+    transform: translate(0, 0);
+    width: 100%;
+    height: var(--toggle-line);
+    background: var(--toggle-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-toggle:before {
+    box-shadow: 0 calc(var(--toggle-size) / 1.5) 0 0 var(--toggle-color);
+}
+
+.nav-toggle:after {
+    box-shadow: 0 calc(-var(--toggle-size) / 1.5) 0 0 var(--toggle-color);
+}
+
+.nav-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 300px;
+    max-width: 50vw;
+    width: 30vw;
+    height: 100vh;
+    z-index: 1;
+    padding: 0px;
+    transition: transform 0.3s ease;
+    transform: translate(calc(-100% - 50px), 0);
+    background: #efefef;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px 0;
+    align-content: start;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+}
+
+.nav-item {
+    /* background: #e0e0e0; */
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+    background: #d0d0d0;
+}
+
+.profile {
+    background-color: #578ebd;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.profile-img {
+    background-color: #44eb65;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.nav-items a {
+    padding-left: 30px;
+    font-size: 16px;
+    color: #333;
+    font-weight: 700;
+    padding: 15px 15px 15px 30px;
+}
+
+.dark-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.moon {
+    font-size: 30px;
+}
