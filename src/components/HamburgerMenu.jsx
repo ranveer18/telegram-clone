@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import "./Menu.css";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAddressBook,
@@ -27,6 +26,7 @@ const HamburgerMenu = () => {
   const toggleNav = () => {
     setIsActive(!isActive);
   };
+
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
@@ -37,7 +37,9 @@ const HamburgerMenu = () => {
 
   return (
     <div
-      className={`nav-container ${isActive ? "is-active" : ""}`}
+      className={`nav-container ${isActive ? "is-active" : ""} ${
+        isDarkMode ? "dark-mode" : "light-mode"
+      }`}
       tabIndex="0"
       ref={navRef}
       onBlur={handleBlur}
@@ -55,13 +57,13 @@ const HamburgerMenu = () => {
               <FontAwesomeIcon
                 icon={faSun}
                 onClick={toggleDarkMode}
-                className="moon"
+                className="mode-toggle sun"
               />
             ) : (
               <FontAwesomeIcon
                 icon={faMoon}
                 onClick={toggleDarkMode}
-                className="moon"
+                className="mode-toggle moon"
               />
             )}
           </div>
