@@ -9,8 +9,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/:chatId" element={<ChatPage />} />
-        <Route path="/" element={<Homepage />} />
+        <Route path="/telegram-clone/:chatId" element={<ChatPage />} />
+        <Route path="/telegram-clone/" element={<Homepage />} />
       </Routes>
     </Router>
   );

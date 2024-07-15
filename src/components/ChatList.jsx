@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const ChatList = ({ chats }) => {
   const navigate = useNavigate();
   const handleChatClick = (chatId) => {
-    navigate(`/${chatId}`);
+    navigate(`/telegram-clone/${chatId}`);
   };
 
   const truncateMessage = (message) => {
